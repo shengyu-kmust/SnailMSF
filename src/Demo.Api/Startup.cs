@@ -32,6 +32,7 @@ namespace Demo.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo.Api", Version = "v1" });
             });
+            services.AddSMFAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +48,7 @@ namespace Demo.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
